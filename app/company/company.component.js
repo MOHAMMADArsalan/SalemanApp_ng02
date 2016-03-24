@@ -36,6 +36,9 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                     this.companyName = this.CompanyForm.controls["companyName"];
                     this.address = this.CompanyForm.controls["address"];
                 }
+                CompanyComponent.prototype.OnInit = function () {
+                    this.id = localStorage.getItem("id");
+                };
                 CompanyComponent.prototype.onSubmit = function () {
                     console.log("ckjckc", this.CompanyForm);
                     this._router.navigate(["Dashboard"]);

@@ -10,5 +10,6 @@ export class SigninComponent {
   constructor(private _router: Router) { }
   onSubmit(form) {
   this._router.navigate(["Company"]);
+  localStorage.setItem("id", "Arsalan");
   }
 }

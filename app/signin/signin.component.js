@@ -29,6 +29,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router"], functio
                 }
                 SigninComponent.prototype.onSubmit = function (form) {
                     this._router.navigate(["Company"]);
+                    localStorage.setItem("id", "Arsalan");
                 };
                 SigninComponent = __decorate([
                     core_1.Component({
