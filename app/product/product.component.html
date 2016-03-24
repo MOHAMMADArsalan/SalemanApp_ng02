@@ -1,0 +1,21 @@
+<div class="col-md-4 col-xs-2 col-sm-4"></div>
+<form class="form-inline" class="row col-md-4 col-xs-8  col-sm-4" style="margin-top:3%;" [ngFormModel]="ProductForm" (ngSubmit)="onSubmit()" novalidate>
+  <h2>Add Product</h2>
+<div class="form-group">
+  <input type="text" class="form-control" [ngFormControl]="productName" placeholder="Product Name">
+  <span   class="text-danger" *ngIf="!productName.valid && productName.dirty">
+  <span *ngIf="productName.errors.isStartWithNumber">Product name should not start with number</span>
+  </span>
+</div>
+<div class="form-group">
+  <input type="text" class="form-control" [ngFormControl]="price" placeholder="Price" required>
+  <span class="text-danger" *ngIf="notNumber" [innerText]="notNumber"></span>
+  <span  class="text-danger" *ngIf="!price.value && price.dirty" >Price is required</span>
+</div>
+<div class="form-group">
+  <input type="text"  class="form-control" [ngFormControl]="type" placeholder="Type of product example litre,K.G">
+  <span  class="text-danger" *ngIf="!type.valid && type.dirty">Type is required</span>
+</div>
+<button type="submit" [disabled]="!ProductForm.valid" class="btn btn-success">Add Product</button>
+</form>
+<div class="col-md-4 col-xs-2 col-sm-4"></div>

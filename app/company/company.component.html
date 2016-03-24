@@ -1,0 +1,16 @@
+<div class="col-md-4 col-xs-2 col-sm-4"></div>
+<form class="form-inline" class="row col-md-4 col-xs-8  col-sm-4" style="margin-top:3%;" [ngFormModel]="CompanyForm" (ngSubmit)="onSubmit()" novalidate>
+  <h2>Add Company</h2>
+<div class="form-group">
+  <input type="text" class="form-control" [ngFormControl]="companyName" placeholder="Company Name">
+  <span   class="text-danger" *ngIf="!companyName.valid && companyName.dirty">
+  <span *ngIf="companyName.errors.isStartWithNumber">Company name should not start with number</span>
+  </span>
+</div>
+<div class="form-group">
+  <input type="text"  class="form-control" [ngFormControl]="address" placeholder="Address">
+  <span  class="text-danger" *ngIf="!address.valid && address.dirty">Address is required</span>
+</div>
+<button type="submit" [disabled]="!CompanyForm.valid" class="btn btn-success">Add Company</button>
+</form>
+<div class="col-md-4 col-xs-2 col-sm-4"></div>

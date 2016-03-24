@@ -1,0 +1,38 @@
+<div class="col-md-4 col-xs-2 col-sm-4"></div>
+<form class="form-inline" class="row col-md-4 col-xs-8  col-sm-4" style="margin-top:3%;" [ngFormModel]="SalemanForm" (ngSubmit)="onSubmit()" novalidate>
+  <h2>Saleman Form</h2>
+<div class="form-group">
+  <input type="text" class="form-control"  [ngFormControl]="userName" placeholder="User Name">
+  <span class="text-danger" *ngIf="userName.dirty && !userName.valid">
+  <span *ngIf="userName.errors.isStartWithNumber">User Name can not start with Number</span></span>
+</div>
+<div class="form-group">
+  <input type="text" class="form-control" [ngFormControl]="firstName" placeholder="First Name">
+  <span class="text-danger" *ngIf="firstName.dirty && !firstName.valid">
+  <span *ngIf="firstName.errors.isStartWithNumber">First Name can not start with Number</span></span>
+</div>
+<div class="form-group">
+  <input type="text" class="form-control" [ngFormControl]="lastName" placeholder="last Name">
+  <span *ngIf="lastName.dirty && !lastName.valid">
+  <span *ngIf="lastName.errors.isStartWithNumber">Last Name can not start with Number</span></span>
+</div>
+<div class="form-group">
+  <input type="email" class="form-control" [ngFormControl]="email" placeholder="example@example.com">
+<span class="text-danger" *ngIf="email.dirty && !email.valid">
+<span *ngIf="email.errors.EmailValidation">Email Address is not Valid</span></span>
+</div>
+<div class="form-group">
+  <input type="password"  class="form-control" [ngFormControl]="password" placeholder="Password">
+  <span *ngIf="password.dirty && !password.valid" class="text-danger">
+  <span *ngIf="password.errors.minlength">Password should be at least 3 character</span>
+  </span>
+</div>
+<div class="form-group">
+  <input type="password" class="form-control" [ngFormControl]="confirmPassword" placeholder="Confirm Password">
+  <span class="text-danger" *ngIf="confirmPassword.dirty && password.value !== confirmPassword.value">Password does not match</span>
+</div>
+<button type="submit" [disabled]="!SalemanForm.valid && password.value !== confirmPassword.value" class="btn btn-success">Sign up</button>
+<strong *ngIf="SalemanForm.valid">Form is in valid</strong>
+<strong *ngIf="!SalemanForm.valid">Form is in invalid you can not submit it</strong>
+</form>
+<div class="col-md-4 col-xs-2 col-sm-4"></div>
