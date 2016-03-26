@@ -1,0 +1,36 @@
+<div class="col-md-4 col-xs-2"></div>
+<form class="form-inline" class="row col-md-4 col-xs-8  col-sm-4" style="margin-top:3%;" [ngFormModel]="SignupForm" (ngSubmit)="onSubmit()" novalidate>
+  <h2>Sign up Form</h2>
+<div class="form-group">
+  <input type="text" class="form-control"  [ngFormControl]="username" placeholder="User Name">
+  <span class="text-danger" *ngIf="username.dirty && !username.valid">
+  <span *ngIf="username.errors.isStartWithNumber">User Name can not start with Number</span></span>
+</div>
+<div class="form-group">
+  <input type="text" class="form-control" [ngFormControl]="firstname" placeholder="First Name">
+  <span class="text-danger" *ngIf="firstname.dirty && !firstname.valid">
+  <span *ngIf="firstname.errors.isStartWithNumber">First Name can not start with Number</span></span>
+</div>
+<div class="form-group">
+  <input type="text" class="form-control" [ngFormControl]="lastname" placeholder="last Name">
+  <span *ngIf="lastname.dirty && !lastname.valid">
+  <span *ngIf="lastname.errors.isStartWithNumber">Last Name can not start with Number</span></span>
+</div>
+<div class="form-group">
+  <input type="email" class="form-control" [ngFormControl]="email" placeholder="example@example.com">
+<span class="text-danger" *ngIf="email.dirty && !email.valid">
+<span *ngIf="email.errors.EmailValidation">Email Address is not Valid</span></span>
+</div>
+<div class="form-group">
+  <input type="password"  class="form-control" [ngFormControl]="password" placeholder="Password">
+  <span *ngIf="password.dirty && !password.valid">
+  <span *ngIf="password.errors.minlength">Password should be at least 3 character</span>
+  </span>
+</div>
+<div class="form-group">
+  <input type="password" class="form-control" [ngFormControl]="confirmPassword" placeholder="Confirm Password">
+  <span *ngIf="confirmPassword.dirty && password.value !== confirmPassword.value">Password does not match</span>
+</div>
+<button type="submit" [disabled]="!SignupForm.valid" class="btn btn-success">Sign up</button>
+</form>
+<div class="col-md-4 col-xs-2"></div>
