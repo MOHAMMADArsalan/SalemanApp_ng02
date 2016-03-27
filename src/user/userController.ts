@@ -5,7 +5,7 @@ let Firebase = require("firebase");
 import bcrypt = require("bcrypt-nodejs");
 
 export function userSignin(req, res) {
-    AdminModel.findOne({ email: req.body.username }, function(err, success) {
+    AdminModel.findOne({ email: req.body.email }, function(err, success) {
         if (success) {
             bcrypt.compare(req.body.password, success.password, function(err, isMatch) {
                 done(err, isMatch);

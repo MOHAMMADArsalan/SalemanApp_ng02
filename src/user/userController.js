@@ -2,7 +2,7 @@ var usermodel_1 = require("./usermodel");
 var Firebase = require("firebase");
 var bcrypt = require("bcrypt-nodejs");
 function userSignin(req, res) {
-    usermodel_1.AdminModel.findOne({ email: req.body.username }, function (err, success) {
+    usermodel_1.AdminModel.findOne({ email: req.body.email }, function (err, success) {
         if (success) {
             bcrypt.compare(req.body.password, success.password, function (err, isMatch) {
                 done(err, isMatch);

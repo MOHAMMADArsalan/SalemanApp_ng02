@@ -25,12 +25,21 @@ System.register(["angular2/core", "angular2/http", "rxjs/Rx"], function(exports_
                 function HttpService(_http) {
                     this._http = _http;
                 }
+                // Sign up
                 HttpService.prototype.SignUp = function (form) {
                     var headers = new http_1.Headers();
                     headers.append("Content-Type", "application/json");
                     var options = new http_1.RequestOptions();
                     options.headers = headers;
                     return this._http.post("/api/signup", form, options)
+                        .map(function (res) { return res.json(); });
+                };
+                HttpService.prototype.SignIn = function (form) {
+                    var headers = new http_1.Headers();
+                    headers.append("Content-Type", "application/json");
+                    var options = new http_1.RequestOptions();
+                    options.headers = headers;
+                    return this._http.post("/api/signin", form, options)
                         .map(function (res) { return res.json(); });
                 };
                 HttpService = __decorate([

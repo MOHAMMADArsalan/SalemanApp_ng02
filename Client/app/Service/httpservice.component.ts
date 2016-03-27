@@ -6,12 +6,23 @@ import "rxjs/Rx";
 
 export class HttpService {
    constructor(private _http: Http) { }
+      // Sign up
    SignUp(form) {
-     let headers: Headers = new Headers();
-     headers.append("Content-Type", "application/json");
-     let options: RequestOptions = new RequestOptions();
-     options.headers = headers;
-         return  this._http.post("/api/signup", form, options )
-     .map(res => res.json());
+      let headers: Headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      let options: RequestOptions = new RequestOptions();
+      options.headers = headers;
+      return  this._http.post("/api/signup", form, options)
+                            .map(res => res.json());
     }
+
+    SignIn(form) {
+      let headers: Headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      let options: RequestOptions = new RequestOptions();
+      options.headers = headers;
+
+      return this._http.post("/api/signin", form, options)
+                              .map(res => res.json());
+   }
 }
