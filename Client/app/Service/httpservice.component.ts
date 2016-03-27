@@ -25,4 +25,13 @@ export class HttpService {
       return this._http.post("/api/signin", form, options)
                               .map(res => res.json());
    }
+    AddCompany(form) {
+      let headers: Headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      let options: RequestOptions = new RequestOptions();
+      options.headers = headers;
+        let token = localStorage.getItem("token");
+      return this._http.post("/api/addCompany?token=" + token, form, options)
+                              .map(res => res.json());
+   }
 }

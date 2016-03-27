@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended : false}));
 
 app.use(morgan("dev"));
 app.use(express.static(path.resolve(__dirname, "../Client")));
-
+var port: number = process.env.PORT || 9000
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../Client/index.html"));
 })
@@ -25,4 +25,5 @@ app.get("/", (req, res) => {
 app.use("/api", api);
 app.use("/router", router);
 
-app.listen(9000);
+app.listen(port);
+console.log("App is Runnig on port 9000")

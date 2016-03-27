@@ -42,6 +42,15 @@ System.register(["angular2/core", "angular2/http", "rxjs/Rx"], function(exports_
                     return this._http.post("/api/signin", form, options)
                         .map(function (res) { return res.json(); });
                 };
+                HttpService.prototype.AddCompany = function (form) {
+                    var headers = new http_1.Headers();
+                    headers.append("Content-Type", "application/json");
+                    var options = new http_1.RequestOptions();
+                    options.headers = headers;
+                    var token = localStorage.getItem("token");
+                    return this._http.post("/api/addCompany?token=" + token, form, options)
+                        .map(function (res) { return res.json(); });
+                };
                 HttpService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

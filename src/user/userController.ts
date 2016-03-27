@@ -45,6 +45,7 @@ export function userSignup(req, res) {
 
 export function addCompany(req, res) {
     let company = new companyModel(req.body);
+    console.log(req.body);
     company.adminId = req.query.token;
     company.save(function(err, success) {
         if (err) {

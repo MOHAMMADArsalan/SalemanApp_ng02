@@ -43,7 +43,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                     this.httpservice.SignIn(body)
                         .subscribe(function (res) {
                         localStorage.setItem("token", res.firebaseToken);
-                        _this._router.navigate(["Dashboard"]);
+                        _this._router.navigate(["Company"]);
                     }, function (err) { return _this.error = "Error to SignIn"; }); // http.post
                     // this._router.navigate(["Company"]);
                     // localStorage.setItem("id", "Arsalan");

@@ -24,9 +24,9 @@ export class SigninComponent {
   onSubmit() {
     let body = JSON.stringify(this.SigninForm.value);
     this.httpservice.SignIn(body)
-        .subscribe((res: Response) => {
-            localStorage.setItem("token", res.firebaseToken)
-            this._router.navigate(["Dashboard"]);
+        .subscribe((res) => {
+            localStorage.setItem("token", res.firebaseToken);
+            this._router.navigate(["Company"]);
           },
         (err) => this.error = "Error to SignIn");	// http.post
         // this._router.navigate(["Company"]);
