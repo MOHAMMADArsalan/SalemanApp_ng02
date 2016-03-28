@@ -12,7 +12,9 @@ System.register(["rxjs/Rx"], function(exports_1) {
                 function Auth() {
                     this.loggedIn = false;
                 }
-                Auth.prototype.login = function () {
+                Auth.prototype.login = function (token) {
+                    console.log("Hello World");
+                    localStorage.setItem("token", token);
                     this.loggedIn = true;
                 };
                 Auth.prototype.logout = function () {

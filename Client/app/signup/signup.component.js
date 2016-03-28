@@ -57,7 +57,8 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                     var _this = this;
                     if (this.SignupForm.dirty && this.SignupForm.valid) {
                         var body = JSON.stringify(this.SignupForm.value);
-                        this.httpservice.SignUp(body)
+                        var url = "/api/signup";
+                        this.httpservice.httpPost(url, body)
                             .subscribe(function (res) {
                             _this._router.navigate(["Signin"]); // callBack
                         }); // http.post

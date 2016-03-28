@@ -2,19 +2,19 @@
 <form class="form-inline" class="row col-md-4 col-xs-8  col-sm-4" style="margin-top:3%;" [ngFormModel]="SalemanForm" (ngSubmit)="onSubmit()" novalidate>
   <h2>Saleman Form</h2>
 <div class="form-group">
-  <input type="text" class="form-control"  [ngFormControl]="userName" placeholder="User Name">
-  <span class="text-danger" *ngIf="userName.dirty && !userName.valid">
-  <span *ngIf="userName.errors.isStartWithNumber">User Name can not start with Number</span></span>
+  <input type="text" class="form-control"  [ngFormControl]="username" placeholder="User Name">
+  <span class="text-danger" *ngIf="username.dirty && !username.valid">
+  <span *ngIf="username.errors.isStartWithNumber">User Name can not start with Number</span></span>
 </div>
 <div class="form-group">
-  <input type="text" class="form-control" [ngFormControl]="firstName" placeholder="First Name">
-  <span class="text-danger" *ngIf="firstName.dirty && !firstName.valid">
-  <span *ngIf="firstName.errors.isStartWithNumber">First Name can not start with Number</span></span>
+  <input type="text" class="form-control" [ngFormControl]="firstname" placeholder="First Name">
+  <span class="text-danger" *ngIf="firstname.dirty && !firstname.valid">
+  <span *ngIf="firstname.errors.isStartWithNumber">First Name can not start with Number</span></span>
 </div>
 <div class="form-group">
-  <input type="text" class="form-control" [ngFormControl]="lastName" placeholder="last Name">
-  <span *ngIf="lastName.dirty && !lastName.valid">
-  <span *ngIf="lastName.errors.isStartWithNumber">Last Name can not start with Number</span></span>
+  <input type="text" class="form-control" [ngFormControl]="lastname" placeholder="last Name">
+  <span *ngIf="lastname.dirty && !lastname.valid">
+  <span *ngIf="lastname.errors.isStartWithNumber">Last Name can not start with Number</span></span>
 </div>
 <div class="form-group">
   <input type="email" class="form-control" [ngFormControl]="email" placeholder="example@example.com">

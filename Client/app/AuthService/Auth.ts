@@ -4,7 +4,9 @@ export class Auth {
   constructor() {
      this.loggedIn = false;
    }
-   login() {
+   login(token) {
+     console.log("Hello World");
+     localStorage.setItem("token", token);
       this.loggedIn = true;
    }
    logout() {

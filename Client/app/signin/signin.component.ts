@@ -1,9 +1,10 @@
 import {Component} from "angular2/core";
 import {FORM_DIRECTIVES , ControlGroup, AbstractControl, FormBuilder, Validators} from "angular2/common";
-import { Router } from "angular2/router";
+import { Router, ComponentInstruction, CanActivate } from "angular2/router";
 import {HttpService} from "../Service/httpservice.component";
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
-
+import {Auth} from "../AuthService/Auth";
+import {inLoggedIn} from "../AuthService/isLoggedIn";
 @Component({
   templateUrl: "app/signin/signin.component.html",
   directives: [FORM_DIRECTIVES]
@@ -13,7 +14,7 @@ export class SigninComponent {
   SigninForm: ControlGroup;
   email: AbstractControl;
   password: AbstractControl;
-  constructor(private _router: Router, signinForm: FormBuilder , private httpservice: HttpService) {
+  constructor(private _router: Router, signinForm: FormBuilder , private httpservice: HttpService, public auth: Auth) {
     this.SigninForm = signinForm.group({
       "email": ["", Validators.required],
       "password": ["", Validators.required]
@@ -24,9 +25,11 @@ export class SigninComponent {
 
   onSubmit() {
     let body = JSON.stringify(this.SigninForm.value);
-    this.httpservice.SignIn(body)
+    let url = "/api/signin";
+    this.httpservice.httpPost(url, body)
         .subscribe((res) => {
-            localStorage.setItem("token", res.firebaseToken);
+          //  localStorage.setItem("token", );
+            this.auth.login(res.firebaseToken);
             this._router.navigate(["Company"]);
           },
         (err) => this.error = "Error to SignIn");	// http.post

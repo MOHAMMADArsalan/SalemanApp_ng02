@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "../customFormValidation/CustomformValidation", "angular2/router", "../Service/httpservice.component", "../AuthService/isLoggedIn"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "../customFormValidation/CustomformValidation", "angular2/router", "../Service/httpservice.component", "../AuthService/isLoggedIn", "../AuthService/Auth"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, CustomformValidation_1, router_1, httpservice_component_1, isLoggedIn_1;
+    var core_1, common_1, CustomformValidation_1, router_1, httpservice_component_1, isLoggedIn_1, Auth_1;
     var CompanyComponent;
     return {
         setters:[
@@ -30,12 +30,16 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
             },
             function (isLoggedIn_1_1) {
                 isLoggedIn_1 = isLoggedIn_1_1;
+            },
+            function (Auth_1_1) {
+                Auth_1 = Auth_1_1;
             }],
         execute: function() {
             CompanyComponent = (function () {
-                function CompanyComponent(companyFrom, _router, _httpservice) {
+                function CompanyComponent(companyFrom, _router, _httpservice, auth) {
                     this._router = _router;
                     this._httpservice = _httpservice;
+                    this.auth = auth;
                     this.CompanyForm = companyFrom.group({
                         "companyName": ["", common_1.Validators.compose([common_1.Validators.required, CustomformValidation_1.CustomFromValidation.isStartWithNumber])],
                         "address": ["", common_1.Validators.required]
@@ -45,11 +49,12 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                 }
                 CompanyComponent.prototype.onSubmit = function () {
                     var _this = this;
-                    this.uid = localStorage.getItem("token");
-                    this.uid += Date.now();
+                    var token = localStorage.getItem("token");
                     var body = JSON.stringify(this.CompanyForm.value);
-                    this._httpservice.AddCompany(body)
+                    var url = "/api/addCompany?token=" + token;
+                    this._httpservice.httpPost(url, body)
                         .subscribe(function (res) {
+                        _this.auth.login(_this.uid);
                         localStorage.setItem("uid", _this.uid);
                         _this._router.navigate(["Dashboard"]);
                     });
@@ -63,7 +68,7 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                     router_1.CanActivate(function (next, prev) {
                         return isLoggedIn_1.inLoggedIn(next, prev);
                     }), 
-                    __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, httpservice_component_1.HttpService])
+                    __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, httpservice_component_1.HttpService, Auth_1.Auth])
                 ], CompanyComponent);
                 return CompanyComponent;
             }());

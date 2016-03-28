@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "angular2/router", "../Service/httpservice.component"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "angular2/router", "../Service/httpservice.component", "../AuthService/Auth"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, httpservice_component_1;
+    var core_1, common_1, router_1, httpservice_component_1, Auth_1;
     var SigninComponent;
     return {
         setters:[
@@ -24,12 +24,16 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
             },
             function (httpservice_component_1_1) {
                 httpservice_component_1 = httpservice_component_1_1;
+            },
+            function (Auth_1_1) {
+                Auth_1 = Auth_1_1;
             }],
         execute: function() {
             SigninComponent = (function () {
-                function SigninComponent(_router, signinForm, httpservice) {
+                function SigninComponent(_router, signinForm, httpservice, auth) {
                     this._router = _router;
                     this.httpservice = httpservice;
+                    this.auth = auth;
                     this.SigninForm = signinForm.group({
                         "email": ["", common_1.Validators.required],
                         "password": ["", common_1.Validators.required]
@@ -40,9 +44,11 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                 SigninComponent.prototype.onSubmit = function () {
                     var _this = this;
                     var body = JSON.stringify(this.SigninForm.value);
-                    this.httpservice.SignIn(body)
+                    var url = "/api/signin";
+                    this.httpservice.httpPost(url, body)
                         .subscribe(function (res) {
-                        localStorage.setItem("token", res.firebaseToken);
+                        //  localStorage.setItem("token", );
+                        _this.auth.login(res.firebaseToken);
                         _this._router.navigate(["Company"]);
                     }, function (err) { return _this.error = "Error to SignIn"; }); // http.post
                     // this._router.navigate(["Company"]);
@@ -53,7 +59,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                         templateUrl: "app/signin/signin.component.html",
                         directives: [common_1.FORM_DIRECTIVES]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, common_1.FormBuilder, httpservice_component_1.HttpService])
+                    __metadata('design:paramtypes', [router_1.Router, common_1.FormBuilder, httpservice_component_1.HttpService, Auth_1.Auth])
                 ], SigninComponent);
                 return SigninComponent;
             }());

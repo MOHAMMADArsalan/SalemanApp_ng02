@@ -7,6 +7,7 @@ import { FORM_DIRECTIVES,
         Validators} from "angular2/common";
 import {CustomFromValidation} from "../customFormValidation/CustomformValidation";
 import {Router} from "angular2/router";
+import {HttpService} from "../Service/httpservice.component";
 @Component({
   selector: "saleman-form",
   templateUrl: "app/addsaleman/saleman.component.html",
@@ -16,25 +17,25 @@ import {Router} from "angular2/router";
 export class SalemanComponent {
   SalemanForm: ControlGroup;
 
-  userName: AbstractControl;
-  firstName: AbstractControl;
-  lastName: AbstractControl;
+  username: AbstractControl;
+  firstname: AbstractControl;
+  lastname: AbstractControl;
   email: AbstractControl;
   password: AbstractControl;
   confirmPassword: AbstractControl;
-  constructor(salemanform: FormBuilder, private _router: Router) {
+  constructor(salemanform: FormBuilder, private _router: Router, private _httpservice: HttpService) {
 
         this.SalemanForm  = salemanform.group({
-            "userName": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
-            "firstName": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
-            "LastName": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
+            "username": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
+            "firstname": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
+            "lastname": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
             "email": ["",  Validators.compose([Validators.required, CustomFromValidation.EmailValidation])],
             "password": ["", Validators.compose([Validators.required, Validators.minLength(3)])],
             "confirmPassword": ["", Validators.required]
         });
-        this.userName = this.SalemanForm.controls["userName"];
-        this.firstName = this.SalemanForm.controls["firstName"];
-        this.lastName = this.SalemanForm.controls["LastName"];
+        this.username = this.SalemanForm.controls["username"];
+        this.firstname = this.SalemanForm.controls["firstname"];
+        this.lastname = this.SalemanForm.controls["lastname"];
         this.email = this.SalemanForm.controls["email"];
         this.password = this.SalemanForm.controls["password"];
         this.confirmPassword = this.SalemanForm.controls["confirmPassword"];
@@ -42,7 +43,11 @@ export class SalemanComponent {
   }
     onSubmit() {
       if ( this.SalemanForm.dirty && this.SalemanForm.valid) {
-        this._router.navigate(["Dashboard"]);
+        let body = JSON.stringify(this.SalemanForm.value);
+        let url = "/api/addSalesman";
+        this._httpservice.httpPost(url, body)
+        .subscribe(res => { console.log("Saleman Created ");
+        this._router.navigate(["Dashboard"]); });
       }
     }
 }

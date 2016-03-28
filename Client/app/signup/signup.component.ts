@@ -46,7 +46,8 @@ export class SignupComponent {
   onSubmit() {
     if ( this.SignupForm.dirty && this.SignupForm.valid) {
       let body = JSON.stringify(this.SignupForm.value);
-      this.httpservice.SignUp(body)
+      let url = "/api/signup";
+      this.httpservice.httpPost(url, body)
      .subscribe((res: Response) => {
       this._router.navigate(["Signin"]);	// callBack
             });	// http.post

@@ -29,38 +29,13 @@ System.register(["angular2/core", "angular2/http", "angular2/router", "rxjs/Rx"]
                     this._http = _http;
                     this._router = _router;
                 }
-                //    IsloggedIn() {
-                //    let token = localStorage.getItem("token");
-                //    if (token) {
-                //       return true;
-                //    }else {
-                //       this._router.navigate(["SignIn"]);
-                //    }
-                // }
-                // Sign up
-                HttpService.prototype.SignUp = function (form) {
+                // Method For All Post Request
+                HttpService.prototype.httpPost = function (url, form) {
                     var headers = new http_1.Headers();
                     headers.append("Content-Type", "application/json");
                     var options = new http_1.RequestOptions();
                     options.headers = headers;
-                    return this._http.post("/api/signup", form, options)
-                        .map(function (res) { return res.json(); });
-                };
-                HttpService.prototype.SignIn = function (form) {
-                    var headers = new http_1.Headers();
-                    headers.append("Content-Type", "application/json");
-                    var options = new http_1.RequestOptions();
-                    options.headers = headers;
-                    return this._http.post("/api/signin", form, options)
-                        .map(function (res) { return res.json(); });
-                };
-                HttpService.prototype.AddCompany = function (form) {
-                    var headers = new http_1.Headers();
-                    headers.append("Content-Type", "application/json");
-                    var options = new http_1.RequestOptions();
-                    options.headers = headers;
-                    var token = localStorage.getItem("token");
-                    return this._http.post("/api/addCompany?token=" + token, form, options)
+                    return this._http.post(url, form, options)
                         .map(function (res) { return res.json(); });
                 };
                 HttpService = __decorate([
