@@ -1,6 +1,6 @@
-import {Component} from "angular2/core";
-import {ROUTER_DIRECTIVES, RouteConfig, RouterLink, RouterOutlet} from "angular2/router";
-
+import {Component , OnInit} from "angular2/core";
+import {ROUTER_DIRECTIVES, RouteConfig, RouterLink, RouterOutlet, CanActivate, Router} from "angular2/router";
+import {HttpService} from "./Service/httpservice.component";
 // Route Component
 import { SignupComponent } from "./signup/signup.component";
 import { SigninComponent } from "./signin/signin.component";
@@ -8,6 +8,7 @@ import { ProductComponent} from "./product/product.component";
 import {CompanyComponent} from "./company/company.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {SalemanComponent} from "./addsaleman/saleman.component";
+import {Auth} from "./AuthService/Auth";
 // Component
 @Component({
   selector: "app",
@@ -23,7 +24,24 @@ import {SalemanComponent} from "./addsaleman/saleman.component";
   {path: "/dashboard", name: "Dashboard", component: DashboardComponent},
   {path: "/addsaleman", name: "SalemanForm", component: SalemanComponent}
 ])
+
 // Main bootstrap class
 export class AppComponent {
-  constructor() {
+  token:  string;
+  uid: string;
+  constructor(private _router: Router, private auth: Auth) {
+    this.token = localStorage.getItem("token");
+    this.uid = localStorage.getItem("uid");
+    if (this.token && this.uid) {
+        this._router.navigate(["Dashboard"]);
+    }
+    else {
+         this._router.navigate(["Signin"]);
+    }
+  }
+  logout() {
+    this.auth.logout();
+    localStorage.removeItem("token");
+    localStorage.removeItem("uid");
+  }
 }

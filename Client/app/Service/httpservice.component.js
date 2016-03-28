@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/http", "rxjs/Rx"], function(exports_1) {
+System.register(["angular2/core", "angular2/http", "angular2/router", "rxjs/Rx"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/http", "rxjs/Rx"], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, router_1;
     var HttpService;
     return {
         setters:[
@@ -19,12 +19,24 @@ System.register(["angular2/core", "angular2/http", "rxjs/Rx"], function(exports_
             function (http_1_1) {
                 http_1 = http_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (_1) {}],
         execute: function() {
             HttpService = (function () {
-                function HttpService(_http) {
+                function HttpService(_http, _router) {
                     this._http = _http;
+                    this._router = _router;
                 }
+                //    IsloggedIn() {
+                //    let token = localStorage.getItem("token");
+                //    if (token) {
+                //       return true;
+                //    }else {
+                //       this._router.navigate(["SignIn"]);
+                //    }
+                // }
                 // Sign up
                 HttpService.prototype.SignUp = function (form) {
                     var headers = new http_1.Headers();
@@ -53,7 +65,7 @@ System.register(["angular2/core", "angular2/http", "rxjs/Rx"], function(exports_
                 };
                 HttpService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, router_1.Router])
                 ], HttpService);
                 return HttpService;
             }());

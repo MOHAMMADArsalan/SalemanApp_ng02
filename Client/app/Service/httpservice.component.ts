@@ -1,11 +1,20 @@
 import {Injectable} from "angular2/core";
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
+import { Router } from "angular2/router";
 import { Observable} from "rxjs/Observable";
 import "rxjs/Rx";
 @Injectable()
 
 export class HttpService {
-   constructor(private _http: Http) { }
+   constructor(private _http: Http, private _router: Router) { }
+   //    IsloggedIn() {
+   //    let token = localStorage.getItem("token");
+   //    if (token) {
+   //       return true;
+   //    }else {
+   //       this._router.navigate(["SignIn"]);
+   //    }
+   // }
       // Sign up
    SignUp(form) {
       let headers: Headers = new Headers();

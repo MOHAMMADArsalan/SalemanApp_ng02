@@ -8,10 +8,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav span6 pull-right">
-        <li role="presentation" *ngIf="!id"><a href="" [routerLink]="['Signin']">Signin</a></li>
-        <li role="presentation" *ngIf="!id"><a href="" [routerLink]="['Signup']">Signup</a></li>
-        <li role="presentation" *ngIf="id"><a href="" [routerLink]="['Product']">Product</a></li>
-        <li role="presentation" *ngIf="id"><a href="" [routerLink]="['SalemanForm']">Add saleman</a></li>
+        <li role="presentation" *ngIf="!token"><a href="" [routerLink]="['Signin']">Signin</a></li>
+        <li role="presentation" *ngIf="!token"><a href="" [routerLink]="['Signup']">Signup</a></li>
+        <li role="presentation" *ngIf="token"><a href="" [routerLink]="['Product']">Product</a></li>
+        <li role="presentation" *ngIf="token"><a href="" [routerLink]="['SalemanForm']">Add saleman</a></li>
+        <li role="presentation" *ngIf="token"><a href="" (click)="logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

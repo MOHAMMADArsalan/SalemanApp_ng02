@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "./signup/signup.component", "./signin/signin.component", "./product/product.component", "./company/company.component", "./dashboard/dashboard.component", "./addsaleman/saleman.component"], function(exports_1) {
+System.register(["angular2/core", "angular2/router", "./signup/signup.component", "./signin/signin.component", "./product/product.component", "./company/company.component", "./dashboard/dashboard.component", "./addsaleman/saleman.component", "./AuthService/Auth"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, signup_component_1, signin_component_1, product_component_1, company_component_1, dashboard_component_1, saleman_component_1;
+    var core_1, router_1, signup_component_1, signin_component_1, product_component_1, company_component_1, dashboard_component_1, saleman_component_1, Auth_1;
     var AppComponent;
     return {
         setters:[
@@ -36,12 +36,30 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
             },
             function (saleman_component_1_1) {
                 saleman_component_1 = saleman_component_1_1;
+            },
+            function (Auth_1_1) {
+                Auth_1 = Auth_1_1;
             }],
         execute: function() {
             // Component
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_router, auth) {
+                    this._router = _router;
+                    this.auth = auth;
+                    this.token = localStorage.getItem("token");
+                    this.uid = localStorage.getItem("uid");
+                    if (this.token && this.uid) {
+                        this._router.navigate(["Dashboard"]);
+                    }
+                    else {
+                        this._router.navigate(["Signin"]);
+                    }
                 }
+                AppComponent.prototype.logout = function () {
+                    this.auth.logout();
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("uid");
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "app",
@@ -56,7 +74,7 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
                         { path: "/dashboard", name: "Dashboard", component: dashboard_component_1.DashboardComponent },
                         { path: "/addsaleman", name: "SalemanForm", component: saleman_component_1.SalemanComponent }
                     ]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router, Auth_1.Auth])
                 ], AppComponent);
                 return AppComponent;
             }());
