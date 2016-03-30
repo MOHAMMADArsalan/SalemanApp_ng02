@@ -52,7 +52,8 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                     var _this = this;
                     if (this.SalemanForm.dirty && this.SalemanForm.valid) {
                         var body = JSON.stringify(this.SalemanForm.value);
-                        var url = "/api/addSalesman";
+                        var token = localStorage.getItem("token");
+                        var url = "/api/addSalesman?token=" + token;
                         this._httpservice.httpPost(url, body)
                             .subscribe(function (res) {
                             console.log("Saleman Created ");

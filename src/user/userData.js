@@ -19,9 +19,11 @@ router.get("/getcompany", function (req, res) {
 });
 // Add product
 router.post("/addproduct", function (req, res) {
-    console.log(req.body);
     var product = new usermodel_1.productModel(req.body);
-    // product.adminId = req.query.token;
+    product.adminId = req.query.token;
+    product.companyId = req.query.token;
+    req.body.adminId = req.query.token;
+    req.body.companyId = req.query.token;
     product.save(function (err, success) {
         if (err) {
             res.send({ message: false, Error: "Error to add product" });

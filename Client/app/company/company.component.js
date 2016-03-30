@@ -54,8 +54,8 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                     var url = "/api/addCompany?token=" + token;
                     this._httpservice.httpPost(url, body)
                         .subscribe(function (res) {
-                        _this.auth.login(_this.uid);
-                        localStorage.setItem("uid", _this.uid);
+                        _this.auth.login(token);
+                        //localStorage.setItem("uid", this.uid);
                         _this._router.navigate(["Dashboard"]);
                     });
                 };

@@ -2,7 +2,6 @@
 var bcrypt = require("bcrypt-nodejs");
 var mongoose = require("mongoose");
 var SALT_FACTOR = 10;
-
 //Admin Schema
 var AdminSchema = new mongoose.Schema({
     username: { type: String, required: true },
@@ -18,7 +17,6 @@ var AdminSchema = new mongoose.Schema({
     createdOn: { type: Date, default: Date.now() },
     companyName: String
 });
-
 //Company Schema
 var companySchema = new mongoose.Schema({
     companyName: { type: String, unique: true, required: true },
@@ -38,7 +36,6 @@ var productSchema = new mongoose.Schema({
     type: String,
     createdOn: { type: Date, default: Date.now() }
 });
-
 //Order Schema
 var orderSchema = new mongoose.Schema({
     location: { lat: Number, long: Number },

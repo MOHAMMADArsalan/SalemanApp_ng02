@@ -18,7 +18,6 @@ function userSignin(req, res) {
 }
 exports.userSignin = userSignin;
 function userSignup(req, res) {
-    console.log(typeof req.body);
     var ref = new Firebase("https://salesmanhybirdapp.firebaseio.com/user");
     ref.createUser({
         email: req.body.email,
@@ -78,6 +77,7 @@ function addSalesman(req, res) {
             //user save
             req.body.firebaseToken = userData.uid;
             req.body.companyId = req.query.token;
+            req.body.role_admin = false;
             var user = new usermodel_1.AdminModel(req.body);
             user.companyName = req.body.companyName;
             user.save(function (err, success) {

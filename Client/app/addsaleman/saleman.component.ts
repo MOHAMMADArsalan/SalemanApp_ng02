@@ -24,14 +24,13 @@ export class SalemanComponent {
   password: AbstractControl;
   confirmPassword: AbstractControl;
   constructor(salemanform: FormBuilder, private _router: Router, private _httpservice: HttpService) {
-
-        this.SalemanForm  = salemanform.group({
-            "username": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
-            "firstname": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
-            "lastname": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
-            "email": ["",  Validators.compose([Validators.required, CustomFromValidation.EmailValidation])],
-            "password": ["", Validators.compose([Validators.required, Validators.minLength(3)])],
-            "confirmPassword": ["", Validators.required]
+            this.SalemanForm  = salemanform.group({
+                "username": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
+                "firstname": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
+                "lastname": ["", Validators.compose([Validators.required, CustomFromValidation.isStartWithNumber])],
+                "email": ["",  Validators.compose([Validators.required, CustomFromValidation.EmailValidation])],
+                "password": ["", Validators.compose([Validators.required, Validators.minLength(3)])],
+                "confirmPassword": ["", Validators.required]
         });
         this.username = this.SalemanForm.controls["username"];
         this.firstname = this.SalemanForm.controls["firstname"];
@@ -44,7 +43,8 @@ export class SalemanComponent {
     onSubmit() {
       if ( this.SalemanForm.dirty && this.SalemanForm.valid) {
         let body = JSON.stringify(this.SalemanForm.value);
-        let url = "/api/addSalesman";
+        let token = localStorage.getItem("token");
+        let url = "/api/addSalesman?token=" + token;
         this._httpservice.httpPost(url, body)
         .subscribe(res => { console.log("Saleman Created ");
         this._router.navigate(["Dashboard"]); });

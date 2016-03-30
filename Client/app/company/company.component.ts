@@ -40,8 +40,8 @@ export class CompanyComponent {
     let url = "/api/addCompany?token=" + token;
     this._httpservice.httpPost(url, body)
           .subscribe((res) => {
-           this.auth.login(this.uid);
-          localStorage.setItem("uid", this.uid);
+           this.auth.login(token);
+          //localStorage.setItem("uid", this.uid);
           this._router.navigate(["Dashboard"]);
   });
   }

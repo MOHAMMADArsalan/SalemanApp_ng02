@@ -5,7 +5,7 @@ export class Auth {
      this.loggedIn = false;
    }
    login(token) {
-     console.log("Hello World");
+     console.log(token);
      localStorage.setItem("token", token);
       this.loggedIn = true;
    }

@@ -2,9 +2,9 @@
 <form class="form-inline" class="row col-md-4 col-xs-8  col-sm-4" style="margin-top:3%;" [ngFormModel]="ProductForm" (ngSubmit)="onSubmit()" novalidate>
   <h2>Add Product</h2>
 <div class="form-group">
-  <input type="text" class="form-control" [ngFormControl]="productName" placeholder="Product Name">
-  <span   class="text-danger" *ngIf="!productName.valid && productName.dirty">
-  <span *ngIf="productName.errors.isStartWithNumber">Product name should not start with number</span>
+  <input type="text" class="form-control" [ngFormControl]="name" placeholder="Product Name">
+  <span   class="text-danger" *ngIf="!name.valid && name.dirty">
+  <span *ngIf="name.errors.isStartWithNumber">Product name should not start with number</span>
   </span>
 </div>
 <div class="form-group">
