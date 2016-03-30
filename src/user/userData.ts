@@ -82,7 +82,7 @@ router.get("/getsaleman", function(req,res){
         } else if(!data){
             res.send("saleman not found")
         }else{
-            res.send(data);
+            res.send({data: data});
         }
     })
 })

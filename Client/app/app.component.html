@@ -12,6 +12,7 @@
         <li role="presentation" *ngIf="!token"><a href="" [routerLink]="['Signup']">Signup</a></li>
         <li role="presentation" *ngIf="token"><a href="" [routerLink]="['Product']">Product</a></li>
         <li role="presentation" *ngIf="token"><a href="" [routerLink]="['SalemanForm']">Add saleman</a></li>
+        <li role="presentation" *ngIf="token"><a href="" [routerLink]="['ViewSaleman']">View saleman</a></li>
         <li role="presentation" *ngIf="token"><a href="" (click)="logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

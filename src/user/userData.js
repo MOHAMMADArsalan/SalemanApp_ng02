@@ -84,7 +84,7 @@ router.get("/getsaleman", function (req, res) {
             res.send("saleman not found");
         }
         else {
-            res.send(data);
+            res.send({ data: data });
         }
     });
 });

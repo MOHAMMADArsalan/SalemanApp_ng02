@@ -46,7 +46,7 @@ export class SalemanComponent {
         let token = localStorage.getItem("token");
         let url = "/api/addSalesman?token=" + token;
         this._httpservice.httpPost(url, body)
-        .subscribe(res => { console.log("Saleman Created ");
+        .subscribe(res => { console.log("Saleman Created");
         this._router.navigate(["Dashboard"]); });
       }
     }

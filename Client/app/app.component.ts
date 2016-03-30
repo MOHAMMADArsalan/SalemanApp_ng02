@@ -8,6 +8,7 @@ import { ProductComponent} from "./product/product.component";
 import {CompanyComponent} from "./company/company.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {SalemanComponent} from "./addsaleman/saleman.component";
+import {ViewSalemanComponent} from "./viewSaleman/viewSaleman.component";
 import {Auth} from "./AuthService/Auth";
 // Component
 @Component({
@@ -22,7 +23,8 @@ import {Auth} from "./AuthService/Auth";
   {path: "/product", name: "Product", component: ProductComponent},
   {path: "/company", name: "Company", component: CompanyComponent},
   {path: "/dashboard", name: "Dashboard", component: DashboardComponent},
-  {path: "/addsaleman", name: "SalemanForm", component: SalemanComponent}
+  {path: "/addsaleman", name: "SalemanForm", component: SalemanComponent},
+  {path: "/viewsaleman", name: "ViewSaleman", component: ViewSalemanComponent}
 ])
 
 // Main bootstrap class

@@ -38,6 +38,10 @@ System.register(["angular2/core", "angular2/http", "angular2/router", "rxjs/Rx"]
                     return this._http.post(url, form, options)
                         .map(function (res) { return res.json(); });
                 };
+                HttpService.prototype.httpGet = function (url) {
+                    return this._http.get(url)
+                        .map(function (res) { return res.json(); });
+                };
                 HttpService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http, router_1.Router])

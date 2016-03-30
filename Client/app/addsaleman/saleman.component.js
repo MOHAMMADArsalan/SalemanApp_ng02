@@ -56,7 +56,7 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                         var url = "/api/addSalesman?token=" + token;
                         this._httpservice.httpPost(url, body)
                             .subscribe(function (res) {
-                            console.log("Saleman Created ");
+                            console.log("Saleman Created");
                             _this._router.navigate(["Dashboard"]);
                         });
                     }

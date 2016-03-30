@@ -1,0 +1,17 @@
+<div class="container">
+   <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12">
+     <div class="card" style="max-width:350px;" *ngFor="#S of saleman">
+        <div class="card-header" style="background-color:#F8F8F8;font-size:2em;text-align:center">
+         Quote{{S.username}}
+        </div>
+        <img src="http://placekitten.com/500/200" style="width:350px;"class="card-img-top" alt="Saleman Image"/>
+        <div class="card-block">
+
+           <h4 class="card-title">Email: a4arshi@yahoo.com</h4>
+           <a href="http://www.google.com" class="btn btn-success">Google</a>
+        </div>
+     </div>
+     <a (click)="getSaleman()" class="btn btn-success">Google</a>
+
+   </div>
+</div>

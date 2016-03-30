@@ -17,4 +17,8 @@ export class HttpService {
       return  this._http.post(url, form, options)
                             .map(res => res.json());
     }
+    httpGet(url) {
+      return this._http.get(url)
+                  .map(res => res.json());
+   }
 }
