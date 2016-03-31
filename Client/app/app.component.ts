@@ -33,8 +33,7 @@ export class AppComponent {
   uid: string;
   constructor(private _router: Router, private auth: Auth) {
     this.token = localStorage.getItem("token");
-    this.uid = localStorage.getItem("uid");
-    if (this.token && this.uid) {
+    if (this.token) {
         this._router.navigate(["Dashboard"]);
     }
     else {

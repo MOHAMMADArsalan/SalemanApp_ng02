@@ -23,13 +23,13 @@
 </div>
 <div class="form-group">
   <input type="password"  class="form-control" [ngFormControl]="password" placeholder="Password">
-  <span *ngIf="password.dirty && !password.valid">
+  <span class="text-danger" *ngIf="password.dirty && !password.valid">
   <span *ngIf="password.errors.minlength">Password should be at least 3 character</span>
   </span>
 </div>
 <div class="form-group">
   <input type="password" class="form-control" [ngFormControl]="confirmPassword" placeholder="Confirm Password">
-  <span *ngIf="confirmPassword.dirty && password.value !== confirmPassword.value">Password does not match</span>
+  <span class="text-danger" *ngIf="confirmPassword.dirty && password.value !== confirmPassword.value">Password does not match</span>
 </div>
 <button type="submit" [disabled]="!SignupForm.valid" class="btn btn-success">Sign up</button>
 </form>

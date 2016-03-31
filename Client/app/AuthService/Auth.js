@@ -10,14 +10,15 @@ System.register(["rxjs/Rx"], function(exports_1) {
         execute: function() {
             Auth = (function () {
                 function Auth() {
-                    this.loggedIn = false;
                 }
                 Auth.prototype.login = function (token) {
-                    console.log(token);
                     localStorage.setItem("token", token);
+                    console.log("Loginnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
                     this.loggedIn = true;
                 };
                 Auth.prototype.logout = function () {
+                    //  let url = "/router/getsaleman?token=" + token
+                    //  this._httpservice.httpGet("")
                     this.loggedIn = false;
                 };
                 Auth.prototype.check = function () {

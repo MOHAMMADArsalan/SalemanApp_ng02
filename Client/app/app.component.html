@@ -4,23 +4,26 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Saleman App</a>
     </div>
-    <ul class="nav nav-tabs">
-          <li class="nav-item" *ngIf="!token">
+    <div class="col-md-6 col-xs-2 col-sm-4">
+
+    </div>
+    <ul class="nav nav-tabs" >
+          <li class="nav-item " *ngIf="!token">
             <a class="nav-link" href="" [routerLink]="['Signin']">Signin</a>
           </li>
-          <li class="nav-item" *ngIf="!token">
+          <li class="nav-item pull-right" *ngIf="!token">
             <a class="nav-link" href="" [routerLink]="['Signup']">Signup</a>
           </li>
-          <li class="nav-item" *ngIf="token">
+          <li class="nav-item pull-right" *ngIf="token">
             <a class="nav-link" href="" [routerLink]="['Product']">Product</a>
           </li>
-          <li class="nav-item" *ngIf="token">
+          <li class="nav-item pull-right" *ngIf="token">
             <a class="nav-link" href="" [routerLink]="['SalemanForm']">Add Saleman</a>
           </li>
-          <li class="nav-item" *ngIf="token">
+          <li class="nav-item pull-right" *ngIf="token">
             <a class="nav-link" href="" [routerLink]="['ViewSaleman']">View Saleman</a>
           </li>
-          <li class="nav-item" *ngIf="token">
+          <li class="nav-item pull-right" *ngIf="token">
             <a class="nav-link"  href="" (click)="logout()">Logout</a>
           </li>
     </ul>

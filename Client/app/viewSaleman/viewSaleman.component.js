@@ -25,24 +25,31 @@ System.register(["angular2/core", "../Service/httpservice.component"], function(
                     this._httpservice = _httpservice;
                     this.saleman = [];
                 }
+                // Get All Saleman
                 ViewSalemanComponent.prototype.ngOnInit = function () { this.getSaleman(); };
+                // Request To db for Saleman Data
+                ViewSalemanComponent.prototype.joinedDate = function (date) {
+                    return new Date(date);
+                };
                 ViewSalemanComponent.prototype.getSaleman = function () {
                     var _this = this;
                     var token = localStorage.getItem("token");
                     var url = "/router/getsaleman?token=" + token;
                     this._httpservice.httpGet(url)
                         .subscribe(function (res) {
-                        res.data.forEach(function (saleman) {
-                            _this.saleman.push({
-                                "username": saleman.username,
-                                "firstname": saleman.firstname,
-                                "lastname": saleman.lastname,
-                                "email": saleman.email,
-                                "joinedDate": saleman.createdOn
-                            });
-                        });
-                        console.log(_this.saleman);
+                        console.log(res.data);
+                        _this.saleman = res.data;
                     });
+                    //      .subscribe(res => { res.data.forEach(saleman => {
+                    //      this.saleman.push({
+                    //        "username" : saleman.username,
+                    //        "firstname": saleman.firstname,
+                    //        "lastname": saleman.lastname,
+                    //        "email": saleman.email,
+                    //        "joinedDate": new Date(saleman.createdOn)
+                    //      });
+                    //    });
+                    // });
                 };
                 ViewSalemanComponent = __decorate([
                     core_1.Component({

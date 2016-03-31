@@ -1,15 +1,14 @@
 <div class="container" >
    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12 col-xl-12">
    <div class="card-columns">
-      <div class="card" style="max-width:391px;background-color: #F8F8F8" *ngFor="#S of saleman">
-         <div class="card-header" style="background-color:#F8F8F8;font-size:2em;text-align:center">
+      <div class="card" style="max-width:319px;background-color: #F8F8F8" *ngFor="#S of saleman">
+         <div class="card-header" style="background-color:#F8F8F8;font-size:1.5em;text-align:center">
           {{S.username}}
          </div>
          <img src="http://placekitten.com/500/200" style="width:100%; height:200px;"class="card-img-top" alt="Saleman Image"/>
          <div class="card-block">
-
-            <h5 class="card-title">Email: {{S.email}}</h5>
-            <h5 class="card-title">joined-date: {{S.joinedDate}}</h5>
+             <h5 class="card-title">Email: {{S.email}}</h5>
+            <h5 class="card-title">joined-date: {{joinedDate(S.createdOn) | date}}</h5>
             <a href="http://www.google.com" class="btn btn-success">Google</a>
          </div>
       </div>

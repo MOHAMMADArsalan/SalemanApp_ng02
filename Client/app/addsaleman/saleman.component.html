@@ -32,7 +32,5 @@
   <span class="text-danger" *ngIf="confirmPassword.dirty && password.value !== confirmPassword.value">Password does not match</span>
 </div>
 <button type="submit" [disabled]="!SalemanForm.valid && password.value !== confirmPassword.value" class="btn btn-success">Sign up</button>
-<strong *ngIf="SalemanForm.valid">Form is in valid</strong>
-<strong *ngIf="!SalemanForm.valid">Form is in invalid you can not submit it</strong>
 </form>
 <div class="col-md-4 col-xs-2 col-sm-4"></div>

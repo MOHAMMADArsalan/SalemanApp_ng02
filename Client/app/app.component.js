@@ -50,8 +50,7 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
                     this._router = _router;
                     this.auth = auth;
                     this.token = localStorage.getItem("token");
-                    this.uid = localStorage.getItem("uid");
-                    if (this.token && this.uid) {
+                    if (this.token) {
                         this._router.navigate(["Dashboard"]);
                     }
                     else {
