@@ -34,6 +34,9 @@ export class CompanyComponent {
     this.companyName = this.CompanyForm.controls["companyName"];
     this.address = this.CompanyForm.controls["address"];
   }
+  ngOnInit() {
+      let token = localStorage.getItem("token");
+  }
   onSubmit() {
     let token = localStorage.getItem("token");
     let body = JSON.stringify(this.CompanyForm.value);

@@ -25,6 +25,7 @@ System.register(["angular2/core", "../Service/httpservice.component"], function(
                     this._httpservice = _httpservice;
                     this.saleman = [];
                 }
+                ViewSalemanComponent.prototype.ngOnInit = function () { this.getSaleman(); };
                 ViewSalemanComponent.prototype.getSaleman = function () {
                     var _this = this;
                     var token = localStorage.getItem("token");
@@ -33,7 +34,11 @@ System.register(["angular2/core", "../Service/httpservice.component"], function(
                         .subscribe(function (res) {
                         res.data.forEach(function (saleman) {
                             _this.saleman.push({
-                                "username": saleman.username
+                                "username": saleman.username,
+                                "firstname": saleman.firstname,
+                                "lastname": saleman.lastname,
+                                "email": saleman.email,
+                                "joinedDate": saleman.createdOn
                             });
                         });
                         console.log(_this.saleman);

@@ -6,17 +6,20 @@ import {HttpService} from "../Service/httpservice.component";
 export class ViewSalemanComponent {
   saleman: Array<any>= [];
   constructor(private _httpservice: HttpService) { }
+  ngOnInit() { this.getSaleman(); }
    getSaleman() {
      let token = localStorage.getItem("token");
      let url = "/router/getsaleman?token=" + token;
      this._httpservice.httpGet(url)
          .subscribe(res => { res.data.forEach(saleman => {
          this.saleman.push({
-           "username" : saleman.username
-         })
-
-       })
+           "username" : saleman.username,
+           "firstname": saleman.firstname,
+           "lastname": saleman.lastname,
+           "email": saleman.email,
+           "joinedDate": saleman.createdOn
+         });
+       });
      console.log(this.saleman)});
-
    }
 }
