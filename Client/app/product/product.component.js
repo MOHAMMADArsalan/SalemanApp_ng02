@@ -46,12 +46,13 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                     this.type = this.ProductForm.controls["type"];
                 }
                 ProductComponent.prototype.onSubmit = function () {
+                    var _this = this;
                     if (!isNaN(this.price.value)) {
                         var token = localStorage.getItem("token");
                         var body = JSON.stringify(this.ProductForm.value);
                         var url = "/router/addproduct?token=" + token;
                         this._httpservice.httpPost(url, body)
-                            .subscribe(function (res) { return console.log(res); });
+                            .subscribe(function (res) { _this._router.navigate(["Dashboard"]); });
                     }
                     else {
                         this.notNumber = "please enter only number";

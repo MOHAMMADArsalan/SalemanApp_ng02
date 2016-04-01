@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../navtoolbar/navtoolbar.component"], function(exports_1) {
+System.register(["angular2/core", "../navtoolbar/navtoolbar.component", "../Service/httpservice.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "../navtoolbar/navtoolbar.component"], functio
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, navtoolbar_component_1;
+    var core_1, navtoolbar_component_1, httpservice_component_1;
     var ViewProductComponent;
     return {
         setters:[
@@ -18,17 +18,29 @@ System.register(["angular2/core", "../navtoolbar/navtoolbar.component"], functio
             },
             function (navtoolbar_component_1_1) {
                 navtoolbar_component_1 = navtoolbar_component_1_1;
+            },
+            function (httpservice_component_1_1) {
+                httpservice_component_1 = httpservice_component_1_1;
             }],
         execute: function() {
             ViewProductComponent = (function () {
-                function ViewProductComponent() {
+                function ViewProductComponent(_httpservice) {
+                    this._httpservice = _httpservice;
                 }
+                ViewProductComponent.prototype.ngOnInit = function () { this.getProduct(); };
+                ViewProductComponent.prototype.getProduct = function () {
+                    var _this = this;
+                    var token = localStorage.getItem("token");
+                    var url = "/router/getproduct?token=" + token;
+                    this._httpservice.httpGet(url)
+                        .subscribe(function (res) { return _this.products = res; });
+                };
                 ViewProductComponent = __decorate([
                     core_1.Component({
                         templateUrl: "./app/viewproduct/viewproduct.component.html",
                         directives: [navtoolbar_component_1.NavToolBarComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [httpservice_component_1.HttpService])
                 ], ViewProductComponent);
                 return ViewProductComponent;
             }());

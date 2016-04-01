@@ -40,7 +40,7 @@ export class ProductComponent {
       let body = JSON.stringify(this.ProductForm.value);
       let url = "/router/addproduct?token=" + token;
          this._httpservice.httpPost(url, body)
-                  .subscribe(res => console.log(res));
+                  .subscribe(res => { this._router.navigate(["Dashboard"]); } );
     }else {
      this.notNumber = "please enter only number";
     }

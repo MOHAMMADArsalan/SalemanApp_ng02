@@ -32,6 +32,6 @@
   <input type="password" class="form-control" [ngFormControl]="confirmPassword" placeholder="Confirm Password">
   <span class="text-danger" *ngIf="confirmPassword.dirty && password.value !== confirmPassword.value">Password does not match</span>
 </div>
-<button type="submit" [disabled]="!SalemanForm.valid && password.value !== confirmPassword.value" class="btn btn-success">Sign up</button>
+<button type="submit" [disabled]="!SalemanForm.valid && password.value !== confirmPassword.value" class="btn btn-success">Submit</button>
 </form>
 <div class="col-md-4 col-xs-2 col-sm-4"></div>

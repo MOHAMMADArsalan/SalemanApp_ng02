@@ -12,14 +12,14 @@ export class ViewSalemanComponent {
   ngOnInit() { this.getSaleman(); }
   // Request To db for Saleman Data
   joinedDate(date) {
-     return new Date(date)
+     return new Date(date);
    }
    getSaleman() {
      let token = localStorage.getItem("token");
      let url = "/router/getsaleman?token=" + token;
      this._httpservice.httpGet(url)
      .subscribe(res => {console.log(res.data);
-     this.saleman = res.data;});
+     this.saleman = res.data; });
     //      .subscribe(res => { res.data.forEach(saleman => {
     //      this.saleman.push({
     //        "username" : saleman.username,
