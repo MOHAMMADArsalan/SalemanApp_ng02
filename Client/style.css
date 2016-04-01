@@ -1,0 +1,14 @@
+.iconFixed {
+  position: absolute;
+  top: 0px;
+  padding-top: 26%;
+  padding-left: 40%;
+  display: none !important;
+}
+.hover:hover li {
+ display: block !important;
+ position: absolute;
+ top: 0px;
+ padding-top: 26%;
+ padding-left: 40%;
+}
