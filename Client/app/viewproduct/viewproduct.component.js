@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "../AuthService/isLoggedIn", "../navtoolbar/navtoolbar.component"], function(exports_1) {
+System.register(["angular2/core", "../navtoolbar/navtoolbar.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,40 +9,31 @@ System.register(["angular2/core", "angular2/router", "../AuthService/isLoggedIn"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, isLoggedIn_1, navtoolbar_component_1;
-    var DashboardComponent;
+    var core_1, navtoolbar_component_1;
+    var ViewProductComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
-            },
-            function (isLoggedIn_1_1) {
-                isLoggedIn_1 = isLoggedIn_1_1;
-            },
             function (navtoolbar_component_1_1) {
                 navtoolbar_component_1 = navtoolbar_component_1_1;
             }],
         execute: function() {
-            DashboardComponent = (function () {
-                function DashboardComponent() {
+            ViewProductComponent = (function () {
+                function ViewProductComponent() {
                 }
-                DashboardComponent = __decorate([
+                ViewProductComponent = __decorate([
                     core_1.Component({
-                        templateUrl: "app/dashboard/dashboard.component.html",
-                        directives: [router_1.RouterLink, navtoolbar_component_1.NavToolBarComponent]
-                    }),
-                    router_1.CanActivate(function (next, prev) {
-                        return isLoggedIn_1.inLoggedIn(next, prev);
+                        templateUrl: "./app/viewproduct/viewproduct.component.html",
+                        directives: [navtoolbar_component_1.NavToolBarComponent]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], DashboardComponent);
-                return DashboardComponent;
+                ], ViewProductComponent);
+                return ViewProductComponent;
             }());
-            exports_1("DashboardComponent", DashboardComponent);
+            exports_1("ViewProductComponent", ViewProductComponent);
         }
     }
 });
-//# sourceMappingURL=dashboard.component.js.map
+//# sourceMappingURL=viewproduct.component.js.map

@@ -1,7 +1,9 @@
 import { Component } from "angular2/core";
 import {HttpService} from "../Service/httpservice.component";
+import {NavToolBarComponent} from "../navtoolbar/navtoolbar.component";
 @Component({
-  templateUrl: `./app/viewSaleman/viewsaleman.component.html`
+  templateUrl: `./app/viewSaleman/viewsaleman.component.html`,
+  directives: [NavToolBarComponent]
 })
 export class ViewSalemanComponent {
   saleman: Array<any>= [];

@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "../customFormValidation/CustomformValidation", "angular2/http", "../Service/httpservice.component", "angular2/router"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "../customFormValidation/CustomformValidation", "angular2/http", "../Service/httpservice.component", "angular2/router", "../navloginbar/navloginbar.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, CustomformValidation_1, http_1, httpservice_component_1, router_1;
+    var core_1, common_1, CustomformValidation_1, http_1, httpservice_component_1, router_1, navloginbar_component_1;
     var SignupComponent;
     return {
         setters:[
@@ -30,6 +30,9 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (navloginbar_component_1_1) {
+                navloginbar_component_1 = navloginbar_component_1_1;
             }],
         execute: function() {
             SignupComponent = (function () {
@@ -68,7 +71,7 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
                     core_1.Component({
                         templateUrl: "app/signup/signup.component.html",
                         styleUrls: ["app/assets/style.css"],
-                        directives: [common_1.FORM_DIRECTIVES]
+                        directives: [common_1.FORM_DIRECTIVES, navloginbar_component_1.NavLoginBarComponent]
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder, http_1.Http, httpservice_component_1.HttpService, router_1.Router])
                 ], SignupComponent);

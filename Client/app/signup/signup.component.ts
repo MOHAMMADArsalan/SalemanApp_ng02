@@ -9,10 +9,11 @@ import {CustomFromValidation} from "../customFormValidation/CustomformValidation
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
 import {HttpService} from "../Service/httpservice.component";
 import {Router} from "angular2/router";
+import {NavLoginBarComponent} from "../navloginbar/navloginbar.component";
 @Component({
   templateUrl: "app/signup/signup.component.html",
   styleUrls: ["app/assets/style.css"],
-  directives: [FORM_DIRECTIVES]
+  directives: [FORM_DIRECTIVES, NavLoginBarComponent]
 })
 export class SignupComponent {
   SignupForm: ControlGroup;

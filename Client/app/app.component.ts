@@ -9,6 +9,7 @@ import {CompanyComponent} from "./company/company.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {SalemanComponent} from "./addsaleman/saleman.component";
 import {ViewSalemanComponent} from "./viewSaleman/viewSaleman.component";
+import {ViewProductComponent} from "./viewproduct/viewproduct.component";
 import {Auth} from "./AuthService/Auth";
 // Component
 @Component({
@@ -24,7 +25,8 @@ import {Auth} from "./AuthService/Auth";
   {path: "/company", name: "Company", component: CompanyComponent},
   {path: "/dashboard", name: "Dashboard", component: DashboardComponent},
   {path: "/addsaleman", name: "SalemanForm", component: SalemanComponent},
-  {path: "/viewsaleman", name: "ViewSaleman", component: ViewSalemanComponent}
+  {path: "/viewsaleman", name: "ViewSaleman", component: ViewSalemanComponent},
+  {path: "/viewproduct", name: "ViewProduct", component: ViewProductComponent}
 ])
 
 // Main bootstrap class
@@ -33,7 +35,8 @@ export class AppComponent {
   uid: string;
   constructor(private _router: Router, private auth: Auth) {
     this.token = localStorage.getItem("token");
-    if (this.token) {
+    this.uid = localStorage.getItem("uid");
+    if (this.token && this.uid) {
         this._router.navigate(["Dashboard"]);
     }
     else {

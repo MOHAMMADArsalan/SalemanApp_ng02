@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "angular2/router", "../Service/httpservice.component", "../AuthService/Auth"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "angular2/router", "../Service/httpservice.component", "../AuthService/Auth", "../navloginbar/navloginbar.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, httpservice_component_1, Auth_1;
+    var core_1, common_1, router_1, httpservice_component_1, Auth_1, navloginbar_component_1;
     var SigninComponent;
     return {
         setters:[
@@ -27,6 +27,9 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
             },
             function (Auth_1_1) {
                 Auth_1 = Auth_1_1;
+            },
+            function (navloginbar_component_1_1) {
+                navloginbar_component_1 = navloginbar_component_1_1;
             }],
         execute: function() {
             SigninComponent = (function () {
@@ -49,7 +52,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                         .subscribe(function (res) {
                         //  localStorage.setItem("token", );
                         _this.auth.login(res.firebaseToken);
-                        _this._router.navigate(["Company"]);
+                        _this._router.navigate(["Dashboard"]);
                     }, function (err) { return _this.error = "Error to SignIn"; }); // http.post
                     // this._router.navigate(["Company"]);
                     // localStorage.setItem("id", "Arsalan");
@@ -57,7 +60,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                 SigninComponent = __decorate([
                     core_1.Component({
                         templateUrl: "app/signin/signin.component.html",
-                        directives: [common_1.FORM_DIRECTIVES]
+                        directives: [common_1.FORM_DIRECTIVES, navloginbar_component_1.NavLoginBarComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, common_1.FormBuilder, httpservice_component_1.HttpService, Auth_1.Auth])
                 ], SigninComponent);

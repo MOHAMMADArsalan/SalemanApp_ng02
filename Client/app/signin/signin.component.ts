@@ -5,9 +5,10 @@ import {HttpService} from "../Service/httpservice.component";
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
 import {Auth} from "../AuthService/Auth";
 import {inLoggedIn} from "../AuthService/isLoggedIn";
+import {NavLoginBarComponent} from "../navloginbar/navloginbar.component";
 @Component({
   templateUrl: "app/signin/signin.component.html",
-  directives: [FORM_DIRECTIVES]
+  directives: [FORM_DIRECTIVES, NavLoginBarComponent]
 })
 export class SigninComponent {
   error: String;
@@ -30,7 +31,7 @@ export class SigninComponent {
         .subscribe((res) => {
           //  localStorage.setItem("token", );
             this.auth.login(res.firebaseToken);
-            this._router.navigate(["Company"]);
+            this._router.navigate(["Dashboard"]);
           },
         (err) => this.error = "Error to SignIn");	// http.post
         // this._router.navigate(["Company"]);

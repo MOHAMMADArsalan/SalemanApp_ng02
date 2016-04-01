@@ -8,11 +8,12 @@ import { FORM_DIRECTIVES,
 import {CustomFromValidation} from "../customFormValidation/CustomformValidation";
 import {Router} from "angular2/router";
 import {HttpService} from "../Service/httpservice.component";
+import {NavToolBarComponent} from "../navtoolbar/navtoolbar.component";
 @Component({
   selector: "saleman-form",
   templateUrl: "app/addsaleman/saleman.component.html",
   styleUrls: ["app/assets/style.css"],
-  directives: [FORM_DIRECTIVES]
+  directives: [FORM_DIRECTIVES, NavToolBarComponent]
 })
 export class SalemanComponent {
   SalemanForm: ControlGroup;

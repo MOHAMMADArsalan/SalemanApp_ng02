@@ -11,10 +11,11 @@ import {HttpService} from "../Service/httpservice.component";
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
 import {inLoggedIn} from "../AuthService/isLoggedIn";
 import {Auth} from "../AuthService/Auth";
+import {NavToolBarComponent} from "../navtoolbar/navtoolbar.component";
 @Component({
   selector: "company-form",
   templateUrl: "app/company/company.component.html",
-  directives: [FORM_DIRECTIVES]
+  directives: [FORM_DIRECTIVES, NavToolBarComponent]
 })
 @CanActivate((next: ComponentInstruction, prev: ComponentInstruction) => {
   return inLoggedIn(next , prev);
