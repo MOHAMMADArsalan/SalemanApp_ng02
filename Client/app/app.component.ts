@@ -43,9 +43,5 @@ export class AppComponent {
          this._router.navigate(["Signin"]);
     }
   }
-  logout() {
-    this.auth.logout();
-    localStorage.removeItem("token");
-    localStorage.removeItem("uid");
-  }
+
 }

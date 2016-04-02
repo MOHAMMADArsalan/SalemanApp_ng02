@@ -10,7 +10,14 @@ System.register(["rxjs/Rx"], function(exports_1) {
         execute: function() {
             Auth = (function () {
                 function Auth() {
-                    this.loggedIn = false;
+                    // localStorage.setItem("uid", "Arslaan");
+                    var token = localStorage.getItem("token");
+                    if (token) {
+                        this.loggedIn = true;
+                    }
+                    else {
+                        this.loggedIn = false;
+                    }
                 }
                 Auth.prototype.login = function (token) {
                     console.log(token);

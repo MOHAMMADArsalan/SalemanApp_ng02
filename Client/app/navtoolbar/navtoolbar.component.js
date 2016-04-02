@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router"], function(exports_1) {
+System.register(["angular2/core", "angular2/router", "../AuthService/Auth"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/router"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, Auth_1;
     var NavToolBarComponent;
     return {
         setters:[
@@ -18,18 +18,27 @@ System.register(["angular2/core", "angular2/router"], function(exports_1) {
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (Auth_1_1) {
+                Auth_1 = Auth_1_1;
             }],
         execute: function() {
             NavToolBarComponent = (function () {
-                function NavToolBarComponent() {
+                function NavToolBarComponent(_auth) {
+                    this._auth = _auth;
                 }
+                NavToolBarComponent.prototype.logout = function () {
+                    this._auth.logout();
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("uid");
+                };
                 NavToolBarComponent = __decorate([
                     core_1.Component({
                         selector: "nav-tool-bar",
                         templateUrl: "./app/navtoolbar/navtoolbar.component.html",
                         directives: [router_1.ROUTER_DIRECTIVES, router_1.RouterLink]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [Auth_1.Auth])
                 ], NavToolBarComponent);
                 return NavToolBarComponent;
             }());

@@ -23,7 +23,16 @@ export class SigninComponent {
     this.email = this.SigninForm.controls["email"];
     this.password = this.SigninForm.controls["password"];
   }
-
+ ngOnInit() {
+   let token = localStorage.getItem("token");
+   let uid = localStorage.getItem("uid");
+   if (token && uid) {
+      location.assign("/#/dashboard");
+    }
+    else {
+      location.assign("/#/company");
+    }
+ }
   onSubmit() {
     let body = JSON.stringify(this.SigninForm.value);
     let url = "/api/signin";

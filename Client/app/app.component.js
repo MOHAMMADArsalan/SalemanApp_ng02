@@ -61,11 +61,6 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
                         this._router.navigate(["Signin"]);
                     }
                 }
-                AppComponent.prototype.logout = function () {
-                    this.auth.logout();
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("uid");
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "app",

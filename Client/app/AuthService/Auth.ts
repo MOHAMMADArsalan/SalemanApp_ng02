@@ -2,7 +2,14 @@ import {Observable} from "rxjs/Rx";
 export class Auth {
   loggedIn: boolean;
   constructor() {
-     this.loggedIn = false;
+    // localStorage.setItem("uid", "Arslaan");
+     let token = localStorage.getItem("token");
+     if (token) {
+       this.loggedIn = true;
+     }
+     else {
+       this.loggedIn = false;
+     }
    }
    login(token) {
      console.log(token);

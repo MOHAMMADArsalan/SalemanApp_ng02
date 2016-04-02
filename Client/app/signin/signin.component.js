@@ -44,6 +44,16 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                     this.email = this.SigninForm.controls["email"];
                     this.password = this.SigninForm.controls["password"];
                 }
+                SigninComponent.prototype.ngOnInit = function () {
+                    var token = localStorage.getItem("token");
+                    var uid = localStorage.getItem("uid");
+                    if (token && uid) {
+                        location.assign("/#/dashboard");
+                    }
+                    else {
+                        location.assign("/#/company");
+                    }
+                };
                 SigninComponent.prototype.onSubmit = function () {
                     var _this = this;
                     var body = JSON.stringify(this.SigninForm.value);
