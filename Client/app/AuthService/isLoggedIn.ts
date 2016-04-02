@@ -1,8 +1,8 @@
 import {Injector} from "angular2/core";
+import {Router, ComponentInstruction} from "angular2/router";
+ // Service
 import {appInjector} from "./app-injector";
 import {Auth} from "./Auth";
-import {Router, ComponentInstruction} from "angular2/router";
-
 export const inLoggedIn = (next: ComponentInstruction, previous: ComponentInstruction) => {
     let injector: Injector = appInjector(); // get the stored reference to the injector
     let auth: Auth = injector.get(Auth);

@@ -1,17 +1,17 @@
-System.register(["./app-injector", "./Auth", "angular2/router"], function(exports_1) {
+System.register(["angular2/router", "./app-injector", "./Auth"], function(exports_1) {
     "use strict";
-    var app_injector_1, Auth_1, router_1;
+    var router_1, app_injector_1, Auth_1;
     var inLoggedIn;
     return {
         setters:[
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (app_injector_1_1) {
                 app_injector_1 = app_injector_1_1;
             },
             function (Auth_1_1) {
                 Auth_1 = Auth_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
             }],
         execute: function() {
             exports_1("inLoggedIn", inLoggedIn = function (next, previous) {

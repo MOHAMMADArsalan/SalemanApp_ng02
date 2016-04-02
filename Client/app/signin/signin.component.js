@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "angular2/router", "../Service/httpservice.component", "../AuthService/Auth", "../navloginbar/navloginbar.component"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "angular2/router", "../Service/httpservice.component", "../Service/commonService.component", "../AuthService/Auth", "../navloginbar/navloginbar.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, httpservice_component_1, Auth_1, navloginbar_component_1;
+    var core_1, common_1, router_1, httpservice_component_1, commonService_component_1, Auth_1, navloginbar_component_1;
     var SigninComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
             function (httpservice_component_1_1) {
                 httpservice_component_1 = httpservice_component_1_1;
             },
+            function (commonService_component_1_1) {
+                commonService_component_1 = commonService_component_1_1;
+            },
             function (Auth_1_1) {
                 Auth_1 = Auth_1_1;
             },
@@ -33,10 +36,11 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
             }],
         execute: function() {
             SigninComponent = (function () {
-                function SigninComponent(_router, signinForm, httpservice, auth) {
+                function SigninComponent(_router, signinForm, httpservice, auth, _commonService) {
                     this._router = _router;
                     this.httpservice = httpservice;
                     this.auth = auth;
+                    this._commonService = _commonService;
                     this.SigninForm = signinForm.group({
                         "email": ["", common_1.Validators.required],
                         "password": ["", common_1.Validators.required]
@@ -45,9 +49,9 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                     this.password = this.SigninForm.controls["password"];
                 }
                 SigninComponent.prototype.ngOnInit = function () {
-                    var token = localStorage.getItem("token");
+                    //  let token = localStorage.getItem("token");
                     var uid = localStorage.getItem("uid");
-                    if (token && uid) {
+                    if (this._commonService.getToken() && uid) {
                         location.assign("/#/dashboard");
                     }
                     else {
@@ -72,7 +76,7 @@ System.register(["angular2/core", "angular2/common", "angular2/router", "../Serv
                         templateUrl: "app/signin/signin.component.html",
                         directives: [common_1.FORM_DIRECTIVES, navloginbar_component_1.NavLoginBarComponent]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, common_1.FormBuilder, httpservice_component_1.HttpService, Auth_1.Auth])
+                    __metadata('design:paramtypes', [router_1.Router, common_1.FormBuilder, httpservice_component_1.HttpService, Auth_1.Auth, commonService_component_1.CommonService])
                 ], SigninComponent);
                 return SigninComponent;
             }());

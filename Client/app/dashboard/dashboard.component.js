@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "../AuthService/isLoggedIn", "../navtoolbar/navtoolbar.component"], function(exports_1) {
+System.register(["angular2/core", "angular2/router", "../navtoolbar/navtoolbar.component", "../Service/httpservice.component", "../AuthService/isLoggedIn"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/router", "../AuthService/isLoggedIn"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, isLoggedIn_1, navtoolbar_component_1;
+    var core_1, router_1, navtoolbar_component_1, httpservice_component_1, isLoggedIn_1;
     var DashboardComponent;
     return {
         setters:[
@@ -19,17 +19,22 @@ System.register(["angular2/core", "angular2/router", "../AuthService/isLoggedIn"
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (isLoggedIn_1_1) {
-                isLoggedIn_1 = isLoggedIn_1_1;
-            },
             function (navtoolbar_component_1_1) {
                 navtoolbar_component_1 = navtoolbar_component_1_1;
+            },
+            function (httpservice_component_1_1) {
+                httpservice_component_1 = httpservice_component_1_1;
+            },
+            function (isLoggedIn_1_1) {
+                isLoggedIn_1 = isLoggedIn_1_1;
             }],
         execute: function() {
             DashboardComponent = (function () {
-                function DashboardComponent() {
+                function DashboardComponent(_httpservice) {
+                    this._httpservice = _httpservice;
                 }
                 DashboardComponent = __decorate([
+                    // Auth Service
                     core_1.Component({
                         templateUrl: "app/dashboard/dashboard.component.html",
                         directives: [router_1.RouterLink, navtoolbar_component_1.NavToolBarComponent]
@@ -37,7 +42,7 @@ System.register(["angular2/core", "angular2/router", "../AuthService/isLoggedIn"
                     router_1.CanActivate(function (next, prev) {
                         return isLoggedIn_1.inLoggedIn(next, prev);
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [httpservice_component_1.HttpService])
                 ], DashboardComponent);
                 return DashboardComponent;
             }());

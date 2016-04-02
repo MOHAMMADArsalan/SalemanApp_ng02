@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "./signup/signup.component", "./signin/signin.component", "./product/product.component", "./company/company.component", "./dashboard/dashboard.component", "./addsaleman/saleman.component", "./viewSaleman/viewSaleman.component", "./viewproduct/viewproduct.component", "./AuthService/Auth"], function(exports_1) {
+System.register(["angular2/core", "angular2/router", "./Service/commonService.component", "./signup/signup.component", "./signin/signin.component", "./product/product.component", "./company/company.component", "./dashboard/dashboard.component", "./addsaleman/saleman.component", "./viewSaleman/viewSaleman.component", "./viewproduct/viewproduct.component", "./AuthService/Auth"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, signup_component_1, signin_component_1, product_component_1, company_component_1, dashboard_component_1, saleman_component_1, viewSaleman_component_1, viewproduct_component_1, Auth_1;
+    var core_1, router_1, commonService_component_1, signup_component_1, signin_component_1, product_component_1, company_component_1, dashboard_component_1, saleman_component_1, viewSaleman_component_1, viewproduct_component_1, Auth_1;
     var AppComponent;
     return {
         setters:[
@@ -18,6 +18,9 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (commonService_component_1_1) {
+                commonService_component_1 = commonService_component_1_1;
             },
             function (signup_component_1_1) {
                 signup_component_1 = signup_component_1_1;
@@ -49,10 +52,11 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
         execute: function() {
             // Component
             AppComponent = (function () {
-                function AppComponent(_router, auth) {
+                function AppComponent(_router, auth, _commonService) {
                     this._router = _router;
                     this.auth = auth;
-                    this.token = localStorage.getItem("token");
+                    this._commonService = _commonService;
+                    this.token = this._commonService.getToken();
                     this.uid = localStorage.getItem("uid");
                     if (this.token && this.uid) {
                         this._router.navigate(["Dashboard"]);
@@ -77,7 +81,7 @@ System.register(["angular2/core", "angular2/router", "./signup/signup.component"
                         { path: "/viewsaleman", name: "ViewSaleman", component: viewSaleman_component_1.ViewSalemanComponent },
                         { path: "/viewproduct", name: "ViewProduct", component: viewproduct_component_1.ViewProductComponent }
                     ]), 
-                    __metadata('design:paramtypes', [router_1.Router, Auth_1.Auth])
+                    __metadata('design:paramtypes', [router_1.Router, Auth_1.Auth, commonService_component_1.CommonService])
                 ], AppComponent);
                 return AppComponent;
             }());

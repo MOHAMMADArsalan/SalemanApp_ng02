@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/common", "../customFormValidation/CustomformValidation", "angular2/router", "../Service/httpservice.component", "../navtoolbar/navtoolbar.component"], function(exports_1) {
+System.register(["angular2/core", "angular2/common", "angular2/router", "../customFormValidation/CustomformValidation", "../Service/httpservice.component", "../navtoolbar/navtoolbar.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, CustomformValidation_1, router_1, httpservice_component_1, navtoolbar_component_1;
+    var core_1, common_1, router_1, CustomformValidation_1, httpservice_component_1, navtoolbar_component_1;
     var ProductComponent;
     return {
         setters:[
@@ -19,11 +19,11 @@ System.register(["angular2/core", "angular2/common", "../customFormValidation/Cu
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (CustomformValidation_1_1) {
-                CustomformValidation_1 = CustomformValidation_1_1;
-            },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (CustomformValidation_1_1) {
+                CustomformValidation_1 = CustomformValidation_1_1;
             },
             function (httpservice_component_1_1) {
                 httpservice_component_1 = httpservice_component_1_1;

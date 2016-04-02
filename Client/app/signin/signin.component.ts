@@ -1,10 +1,13 @@
 import {Component} from "angular2/core";
 import {FORM_DIRECTIVES , ControlGroup, AbstractControl, FormBuilder, Validators} from "angular2/common";
 import { Router, ComponentInstruction, CanActivate } from "angular2/router";
-import {HttpService} from "../Service/httpservice.component";
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
+// Services
+import {HttpService} from "../Service/httpservice.component";
+import {CommonService} from "../Service/commonService.component";
 import {Auth} from "../AuthService/Auth";
 import {inLoggedIn} from "../AuthService/isLoggedIn";
+// Component
 import {NavLoginBarComponent} from "../navloginbar/navloginbar.component";
 @Component({
   templateUrl: "app/signin/signin.component.html",
@@ -15,7 +18,7 @@ export class SigninComponent {
   SigninForm: ControlGroup;
   email: AbstractControl;
   password: AbstractControl;
-  constructor(private _router: Router, signinForm: FormBuilder , private httpservice: HttpService, public auth: Auth) {
+  constructor(private _router: Router, signinForm: FormBuilder, private httpservice: HttpService, public auth: Auth, private _commonService: CommonService) {
     this.SigninForm = signinForm.group({
       "email": ["", Validators.required],
       "password": ["", Validators.required]
@@ -24,9 +27,9 @@ export class SigninComponent {
     this.password = this.SigninForm.controls["password"];
   }
  ngOnInit() {
-   let token = localStorage.getItem("token");
+  //  let token = localStorage.getItem("token");
    let uid = localStorage.getItem("uid");
-   if (token && uid) {
+   if (this._commonService.getToken() && uid) {
       location.assign("/#/dashboard");
     }
     else {

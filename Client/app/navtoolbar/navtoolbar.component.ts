@@ -1,5 +1,6 @@
 import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouterLink} from "angular2/router";
+// Service
 import {Auth} from "../AuthService/Auth";
 @Component({
   selector: "nav-tool-bar",

@@ -1,7 +1,10 @@
 import {Component} from "angular2/core";
 import {RouterLink, CanActivate, ComponentInstruction} from "angular2/router";
-import {inLoggedIn} from "../AuthService/isLoggedIn";
 import {NavToolBarComponent} from "../navtoolbar/navtoolbar.component";
+
+// Service
+import {HttpService} from "../Service/httpservice.component";
+import {inLoggedIn} from "../AuthService/isLoggedIn"; // Auth Service
 @Component({
   templateUrl: "app/dashboard/dashboard.component.html",
   directives: [RouterLink, NavToolBarComponent]
@@ -10,6 +13,6 @@ import {NavToolBarComponent} from "../navtoolbar/navtoolbar.component";
     return inLoggedIn(next, prev);
 })
 export class DashboardComponent {
-  constructor() {
+  constructor(private _httpservice: HttpService) {
  }
 }

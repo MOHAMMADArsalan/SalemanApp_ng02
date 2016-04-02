@@ -1,6 +1,9 @@
 import {Component , OnInit} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouteConfig, RouterLink, RouterOutlet, CanActivate, Router} from "angular2/router";
+
+// Services
 import {HttpService} from "./Service/httpservice.component";
+import {CommonService} from "./Service/commonService.component";
 // Route Component
 import { SignupComponent } from "./signup/signup.component";
 import { SigninComponent } from "./signin/signin.component";
@@ -11,6 +14,7 @@ import {SalemanComponent} from "./addsaleman/saleman.component";
 import {ViewSalemanComponent} from "./viewSaleman/viewSaleman.component";
 import {ViewProductComponent} from "./viewproduct/viewproduct.component";
 import {Auth} from "./AuthService/Auth";
+
 // Component
 @Component({
   selector: "app",
@@ -33,8 +37,8 @@ import {Auth} from "./AuthService/Auth";
 export class AppComponent {
   token:  string;
   uid: string;
-  constructor(private _router: Router, private auth: Auth) {
-    this.token = localStorage.getItem("token");
+  constructor(private _router: Router, private auth: Auth, private _commonService: CommonService) {
+    this.token = this._commonService.getToken();
     this.uid = localStorage.getItem("uid");
     if (this.token && this.uid) {
         this._router.navigate(["Dashboard"]);

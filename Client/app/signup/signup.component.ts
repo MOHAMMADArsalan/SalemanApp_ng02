@@ -1,14 +1,13 @@
 import { Component } from "angular2/core";
-import { FORM_DIRECTIVES,
-          ControlGroup,
-          Control,
-         FormBuilder,
-         AbstractControl,
-        Validators} from "angular2/common";
-import {CustomFromValidation} from "../customFormValidation/CustomformValidation";
+import { FORM_DIRECTIVES, ControlGroup, Control,
+         FormBuilder, AbstractControl, Validators} from "angular2/common";
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
-import {HttpService} from "../Service/httpservice.component";
 import {Router} from "angular2/router";
+// Service
+import {HttpService} from "../Service/httpservice.component";
+// CustomFromValidation
+import {CustomFromValidation} from "../customFormValidation/CustomformValidation";
+// Component
 import {NavLoginBarComponent} from "../navloginbar/navloginbar.component";
 @Component({
   templateUrl: "app/signup/signup.component.html",

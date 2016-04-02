@@ -1,13 +1,12 @@
 import {Component} from "angular2/core";
-import { FORM_DIRECTIVES,
-          ControlGroup,
-          Control,
-         FormBuilder,
-         AbstractControl,
-        Validators} from "angular2/common";
-import {CustomFromValidation} from "../customFormValidation/CustomformValidation";
+import { FORM_DIRECTIVES, ControlGroup, Control,
+         FormBuilder, AbstractControl, Validators} from "angular2/common";
 import {Router} from "angular2/router";
+// CustomformValidation
+import {CustomFromValidation} from "../customFormValidation/CustomformValidation";
+// Service
 import {HttpService} from "../Service/httpservice.component";
+// Component
 import {NavToolBarComponent} from "../navtoolbar/navtoolbar.component";
 @Component({
   selector: "saleman-form",
